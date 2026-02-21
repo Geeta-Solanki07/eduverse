@@ -1,83 +1,20 @@
 "use client";
 
 import { useState, useMemo, useRef, useEffect } from "react";
-
+import {getBatchServ} from "../../app/services/batch.services"
 const FILTERS = [
-  { key: "all", label: "All" },
-  { key: "45days", label: "45 Days" },
-  { key: "3months", label: "3 Months" },
-  { key: "6months", label: "6 Months" },
+  { key: "", label: "All" },
+  { key: "45 Days", label: "45 Days" },
+  { key: "3 Months", label: "3 Months" },
+  { key: "6 Months", label: "6 Months" },
 ];
 
-const INTERNSHIPS = [
-  {
-    id: 1,
-    category: "6months",
-    tag: "Bestseller",
-    title: "Full Stack Web Dev",
-    desc: "Master the MERN stack and build real-world applications from scratch.",
-    duration: "6 Months",
-    price: "₹7,499",
-    img: "https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=500",
-  },
-  {
-    id: 2,
-    category: "45days",
-    tag: "Beginner Friendly",
-    title: "Python Data Science",
-    desc: "Start your journey into data analytics with Python's core libraries.",
-    duration: "45 Days",
-    price: "₹1,499",
-    img: "https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?w=500",
-  },
-  {
-    id: 3,
-    category: "3months",
-    tag: "Most Popular",
-    title: "UI/UX Design Master",
-    desc: "Design user-centric interfaces and conduct user research effectively.",
-    duration: "3 Months",
-    price: "₹3,999",
-    img: "https://www.smart-academy.in/wp-content/uploads/2025/04/Your-Master-Guide-to-a-UIUX-Design-Course-Hyderabad-1024x512.webp",
-  },
-  {
-    id: 4,
-    category: "6months",
-    tag: "Industry Standard",
-    title: "Java Full Stack",
-    desc: "Professional project-based training with manual review.",
-    duration: "6 Months",
-    price: "₹7,499",
-    img: "https://images.unsplash.com/photo-1517694712202-14dd9538aa97?w=500",
-  },
-  {
-    id: 5,
-    category: "45days",
-    tag: "New Release",
-    title: "Android App Dev",
-    desc: "Learn to build and publish your first Android application.",
-    duration: "45 Days",
-    price: "₹1,499",
-    img: "https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?w=500",
-  },
-  {
-    id: 6,
-    category: "3months",
-    tag: "Fast Track",
-    title: "Digital Marketing Pro",
-    desc: "Strategies for SEO, SEM, Email Marketing and social media brand growth.",
-    duration: "3 Months",
-    price: "₹3,999",
-    img: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=500",
-  },
-];
 
 export default function InternshipsSection() {
-  const [activeFilter, setActiveFilter] = useState("all");
+  const [activeFilter, setActiveFilter] = useState("");
   const sliderRef = useRef(null);
   const btnRefs = useRef([]);
 
-  // 🔥 Slider movement logic
   useEffect(() => {
     const index = FILTERS.findIndex(f => f.key === activeFilter);
     const btn = btnRefs.current[index];
@@ -89,10 +26,25 @@ export default function InternshipsSection() {
     }
   }, [activeFilter]);
 
-  const filteredData = useMemo(() => {
-    if (activeFilter === "all") return INTERNSHIPS;
-    return INTERNSHIPS.filter(item => item.category === activeFilter);
-  }, [activeFilter]);
+  
+  const [payload, setPayload]=useState({
+    duration:"",
+  })
+
+  const [batchList, setBatchList]=useState([]);
+  const getBatchList = async()=>{
+    try {
+      let response = await getBatchServ(payload);
+      if(response?.data?.statusCode=="200"){
+        setBatchList(response?.data?.data)
+      }
+    } catch (error) {
+      console.log(error)
+    }
+  }
+  useEffect(()=>{
+    getBatchList()
+  }, [payload])
 
   return (
     <section
@@ -129,8 +81,10 @@ export default function InternshipsSection() {
             <button
               key={filter.key}
               ref={(el) => (btnRefs.current[index] = el)}
-              className={`f-btn ${activeFilter === filter.key ? "active" : ""}`}
-              onClick={() => setActiveFilter(filter.key)}
+              className={`f-btn ${payload?.duration === filter.key ? "active" : ""}`}
+              onClick={() => {setPayload({
+                duration:filter.key
+              }); setActiveFilter(filter.key)}}
             >
               {filter.label}
             </button>
@@ -141,33 +95,34 @@ export default function InternshipsSection() {
 
       {/* Cards */}
       <div className="row g-4">
-        {filteredData.map((item) => (
+        {batchList?.map((item, i) => (
           <div
-            key={item.id}
+            key={item._id}
             className="col-lg-4 col-md-6 internship-card"
           >
             <div className="edu-card-v4">
               <div className="card-img-box">
                 <div className="card-tag">{item.tag}</div>
-                <img src={item.img} alt={item.title} />
+                <img src={item.image} alt={item.name} />
               </div>
 
               <div className="card-content-v4">
-                <h5 className="card-title-v4">{item.title}</h5>
-                <p className="card-text-v4">{item.desc}</p>
+                <h5 className="card-title-v4">{item.name}</h5>
+                <p className="card-text-v4">{item.description}</p>
 
                 <div className="meta-row-v4">
                   <span className="meta-tag-v4">
                     <i className="far fa-clock"></i> {item.duration}
                   </span>
-                  <span className="meta-tag-v4">
+                  {item?.isCertified && <span className="meta-tag-v4">
                     <i className="far fa-check-circle"></i> Certified
-                  </span>
+                  </span>}
+                  
                 </div>
 
                 <div className="card-footer-v4">
-                  <span className="price-v4">{item.price}</span>
-                  <button className="enroll-btn-v4">
+                  <span className="price-v4"><s className="text-muted">{item.price}</s> {item?.discountedPrice}&#8377;</span>
+                  <button className="enroll-btn-v4" onClick={() => window.location.href = "https://eduverse-student.vercel.app/login"}>
                     Enroll Now
                   </button>
                 </div>

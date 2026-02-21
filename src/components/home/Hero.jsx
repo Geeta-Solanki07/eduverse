@@ -25,13 +25,12 @@ export default function HeroNavbar() {
 
   return (
     <>
-      {/* ===== MOBILE OVERLAY MENU ===== */}
       <div className={`mobile-overlay ${menuOpen ? "active" : ""}`} id="mobileMenu">
-        <a href="#" className="m-link" onClick={closeMenu}>Home</a>
+        {/* <a href="#" className="m-link" onClick={closeMenu}>Home</a>
         <a href="#" className="m-link" onClick={closeMenu}>Internships</a>
         <a href="#" className="m-link" onClick={closeMenu}>Features</a>
         <a href="#" className="m-link" onClick={closeMenu}>About Us</a>
-        <a href="#" className="m-link" onClick={closeMenu}>Contact</a>
+        <a href="#" className="m-link" onClick={closeMenu}>Contact</a> */}
 
         <div className="mt-4 d-flex flex-column gap-3 mobile-buttons">
           <button className="btn btn-outline-secondary rounded-pill px-4 py-2 fw-bold">
@@ -45,8 +44,6 @@ export default function HeroNavbar() {
           </button>
         </div>
       </div>
-
-      {/* ===== MAIN WRAPPER ===== */}
       <div
         className="main-wrapper container"
         style={{
@@ -57,7 +54,6 @@ export default function HeroNavbar() {
           backgroundRepeat: "no-repeat",
         }}
       >
-        {/* ===== NAVBAR ===== */}
         <nav className="navbar navbar-expand-lg container" data-aos="fade-down">
           <a className="navbar-brand fw-bold fs-3" href="#">
             <img src="assets/images/logo.png" alt="Dousoft Logo" width="90" />
@@ -78,16 +74,16 @@ export default function HeroNavbar() {
           {/* ===== DESKTOP NAV ===== */}
           <div className="collapse navbar-collapse justify-content-center d-none d-lg-flex">
             <div className="nav-container d-flex">
-              <a className="nav-link active" href="#">Home</a>
+              {/* <a className="nav-link active" href="#">Home</a>
               <a className="nav-link" href="#">Internships</a>
               <a className="nav-link" href="#">Features</a>
-              <a className="nav-link" href="#">About us</a>
+              <a className="nav-link" href="#">About us</a> */}
             </div>
           </div>
 
           {/* ===== DESKTOP AUTH ===== */}
           <div className="d-none d-lg-flex align-items-center gap-4">
-            <a href="#" className="text-dark text-decoration-none fw-semibold">
+            <a href="https://eduverse-student.vercel.app/login" target="blank" className="text-dark text-decoration-none fw-semibold">
               Log in
             </a>
             <button className="btn-signup shadow">Sign up</button>

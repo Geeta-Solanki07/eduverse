@@ -1,7 +1,7 @@
 "use client";
 
-import { useState } from "react";
-
+import { useEffect, useState } from "react";
+import {getFaqListServ} from "../../app/services/faq.service"
 const FAQ_DATA = [
   {
     id: 1,
@@ -32,7 +32,20 @@ export default function PremiumFaqSection() {
   const toggleFaq = (index) => {
     setActiveIndex(activeIndex === index ? null : index);
   };
-
+  const [faqList, setFaqList]=useState([]);
+  const getFaqListFunc = async()=>{
+    try {
+      let response = await getFaqListServ();
+      if(response?.data?.statusCode=="200"){
+        setFaqList(response?.data?.data)
+      }
+    } catch (error) {
+      console.log(error)
+    }
+  }
+  useEffect(()=>{
+    getFaqListFunc()
+  }, [])
   return (
     <section className="premium-faq-section py-5" id="faqs">
       <div className="container">
@@ -49,9 +62,9 @@ export default function PremiumFaqSection() {
           {/* FAQ LEFT */}
           <div className="col-lg-7">
             <div className="custom-accordion">
-              {FAQ_DATA.map((faq, index) => (
+              {faqList.map((faq, index) => (
                 <div
-                  key={faq.id}
+                  key={faq._id}
                   className={`premium-faq-node ${
                     activeIndex === index ? "active" : ""
                   }`}
@@ -61,8 +74,8 @@ export default function PremiumFaqSection() {
                     onClick={() => toggleFaq(index)}
                   >
                     <div className="faq-info">
-                      <span className="faq-number">{faq.number}</span>
-                      <h5 className="faq-question">{faq.question}</h5>
+                      <span className="faq-number">{index+1}</span>
+                      <h5 className="faq-question">{faq?.question}</h5>
                     </div>
 
                     <div className="faq-icon-box">
@@ -73,7 +86,7 @@ export default function PremiumFaqSection() {
 
                   <div className="faq-body">
                     <div className="faq-content-inner">
-                      <p>{faq.answer}</p>
+                      <p>{faq?.answer}</p>
                     </div>
                   </div>
                 </div>
