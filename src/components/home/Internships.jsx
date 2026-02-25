@@ -122,7 +122,7 @@ export default function InternshipsSection() {
 
                 <div className="card-footer-v4">
                   <span className="price-v4"><s className="text-muted">{item.price}</s> {item?.discountedPrice}&#8377;</span>
-                  <button className="enroll-btn-v4" onClick={() => window.location.href = "https://eduverse-student.vercel.app/login"}>
+                  <button className="enroll-btn-v4" onClick={() => window.open("https://eduverse-student.vercel.app")}>
                     Enroll Now
                   </button>
                 </div>

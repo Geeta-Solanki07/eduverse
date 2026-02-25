@@ -11,8 +11,6 @@ const getConfig = () => {
     },
   };
 };
-
-
 export const addEnquiryServ = async (formData) => {
   try {
     const response = await axios.post(BASE_URL + "enquiry/create", formData);
@@ -21,4 +19,5 @@ export const addEnquiryServ = async (formData) => {
     handleError(error);
   }
 };
+
 

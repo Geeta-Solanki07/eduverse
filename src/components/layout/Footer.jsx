@@ -3,6 +3,7 @@
 import { useEffect } from "react";
 import AOS from "aos";
 import "aos/dist/aos.css";
+import { toast } from "react-toastify";
 
 export default function PremiumFooter() {
   useEffect(() => {
@@ -35,17 +36,17 @@ export default function PremiumFooter() {
             </p>
 
             <div className="social-links d-flex gap-3 mt-4">
-              <a href="#" aria-label="LinkedIn">
+              <a href="https://www.linkedin.com/company/dousoft-edu-verse" target="blank" aria-label="LinkedIn">
                 <i className="fab fa-linkedin-in"></i>
               </a>
-              <a href="#" aria-label="Instagram">
+              <a href="https://www.instagram.com/dousofteduverse" target="blank" aria-label="Instagram">
                 <i className="fab fa-instagram"></i>
               </a>
-              <a href="#" aria-label="YouTube">
+              <a href="https://www.youtube.com/@DousoftEduVerse" target="blank" aria-label="YouTube">
                 <i className="fab fa-youtube"></i>
               </a>
-              <a href="#" aria-label="Twitter">
-                <i className="fab fa-twitter"></i>
+              <a href="https://www.facebook.com/DousoftEduverse" target="blank" aria-label="Facebook">
+                <i className="fab fa-facebook"></i>
               </a>
             </div>
           </div>
@@ -59,16 +60,16 @@ export default function PremiumFooter() {
             <h6 className="footer-heading">Platform</h6>
             <ul className="footer-links">
               <li>
-                <a href="#internships">Internship Tracks</a>
+                <a  onClick={()=>toast.info("Coming Soon")}>Internship Tracks</a>
               </li>
               <li>
-                <a href="#features">About Us</a>
+                <a  onClick={()=>toast.info("Coming Soon")}>About Us</a>
               </li>
               <li>
-                <a href="#journeyPin">Career</a>
+                <a  onClick={()=>toast.info("Coming Soon")}>Career</a>
               </li>
               <li>
-                <a href="#faqs">Support Center</a>
+                <a  onClick={()=>toast.info("Coming Soon")}>Support Center</a>
               </li>
             </ul>
           </div>
@@ -82,16 +83,16 @@ export default function PremiumFooter() {
             <h6 className="footer-heading">Compliance</h6>
             <ul className="footer-links">
               <li>
-                <a href="#">Privacy Policy</a>
+                <a  onClick={()=>toast.info("Coming Soon")}>Privacy Policy</a>
               </li>
               <li>
-                <a href="#">Terms of Service</a>
+                <a  onClick={()=>toast.info("Coming Soon")}>Terms of Service</a>
               </li>
               <li>
-                <a href="#">ISO Verification Details</a>
+                <a  onClick={()=>toast.info("Coming Soon")}>ISO Verification Details</a>
               </li>
               <li>
-                <a href="#">Refund Policy</a>
+                <a  onClick={()=>toast.info("Coming Soon")}>Refund Policy</a>
               </li>
             </ul>
           </div>

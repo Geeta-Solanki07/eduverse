@@ -25,7 +25,10 @@ export default function HeroNavbar() {
 
   return (
     <>
-      <div className={`mobile-overlay ${menuOpen ? "active" : ""}`} id="mobileMenu">
+      <div
+        className={`mobile-overlay ${menuOpen ? "active" : ""}`}
+        id="mobileMenu"
+      >
         {/* <a href="#" className="m-link" onClick={closeMenu}>Home</a>
         <a href="#" className="m-link" onClick={closeMenu}>Internships</a>
         <a href="#" className="m-link" onClick={closeMenu}>Features</a>
@@ -83,10 +86,25 @@ export default function HeroNavbar() {
 
           {/* ===== DESKTOP AUTH ===== */}
           <div className="d-none d-lg-flex align-items-center gap-4">
-            <a href="https://eduverse-student.vercel.app/login" target="blank" className="text-dark text-decoration-none fw-semibold">
+            <a
+              href="https://eduverse-student.vercel.app"
+              target="blank"
+              className="text-dark text-decoration-none fw-semibold"
+            >
               Log in
             </a>
-            <button className="btn-signup shadow">Sign up</button>
+            <button
+              className="btn-signup shadow"
+              onClick={() =>
+                window.open(
+                  "https://eduverse-student.vercel.app/sign-up",
+                  "_blank",
+                  "noopener,noreferrer",
+                )
+              }
+            >
+              Sign up
+            </button>
           </div>
         </nav>
 
