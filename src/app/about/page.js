@@ -1,14 +1,9 @@
 "use client";
-import Hero from "@/components/home/Hero";
-import Features from "@/components/home/Features";
-import Internships from "@/components/home/Internships";
-import Process from "@/components/home/Process";
-import FAQ from "@/components/home/FAQ";
-import Testimonials from "@/components/home/Testimonials";
+import About from "@/components/home/About";
 import { useState } from "react";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
-import { addEnquiryServ } from "./services/enquiry.services";
+import { addEnquiryServ } from "../services/enquiry.services";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 export default function Home() {
@@ -26,13 +21,9 @@ export default function Home() {
   });
   return (
     <div className="fw-bold">
-      <Hero />
-      <Features />
-      <Internships />
-      <Process />
-      <FAQ />
-      <Testimonials />
-      {/* enquiry float icon code start */}
+      <About/>
+
+
       <div
         className="fixed-bottom p-4 d-flex flex-column align-items-end"
         style={{ zIndex: 1050 }}

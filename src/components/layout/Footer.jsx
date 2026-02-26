@@ -132,32 +132,6 @@ export default function PremiumFooter() {
             </div>
           </div>
         </div>
-
-        {/* FOOTER BOTTOM */}
-        <div className="footer-bottom mt-5">
-          <div className="row align-items-center">
-            <div className="col-md-6 text-center text-md-start">
-              <p className="copyright mb-0">
-                © 2026 Dousoft EduVerse. Developed for Professional Excellence.
-              </p>
-            </div>
-
-            <div className="col-md-6 text-center text-md-end mt-3 mt-md-0">
-              <img
-                src="https://upload.wikimedia.org/wikipedia/commons/b/b5/PayPal.svg"
-                height="20"
-                className="me-3 opacity-50"
-                alt="PayPal"
-              />
-              <img
-                src="https://upload.wikimedia.org/wikipedia/commons/5/5e/Visa_Inc._logo.svg"
-                height="15"
-                className="opacity-100"
-                alt="Visa"
-              />
-            </div>
-          </div>
-        </div>
       </div>
     </footer>
   );

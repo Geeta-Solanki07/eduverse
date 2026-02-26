@@ -29,11 +29,11 @@ export default function HeroNavbar() {
         className={`mobile-overlay ${menuOpen ? "active" : ""}`}
         id="mobileMenu"
       >
-        {/* <a href="#" className="m-link" onClick={closeMenu}>Home</a>
-        <a href="#" className="m-link" onClick={closeMenu}>Internships</a>
-        <a href="#" className="m-link" onClick={closeMenu}>Features</a>
+        <a href="#" className="m-link" onClick={closeMenu}>Home</a>
+        {/* <a href="#" className="m-link" onClick={closeMenu}>Internships</a> */}
+        {/* <a href="#" className="m-link" onClick={closeMenu}>Features</a> */}
         <a href="#" className="m-link" onClick={closeMenu}>About Us</a>
-        <a href="#" className="m-link" onClick={closeMenu}>Contact</a> */}
+        <a href="#" className="m-link" onClick={closeMenu}>Contact</a>
 
         <div className="mt-4 d-flex flex-column gap-3 mobile-buttons">
           <button className="btn btn-outline-secondary rounded-pill px-4 py-2 fw-bold">
@@ -77,10 +77,9 @@ export default function HeroNavbar() {
           {/* ===== DESKTOP NAV ===== */}
           <div className="collapse navbar-collapse justify-content-center d-none d-lg-flex">
             <div className="nav-container d-flex">
-              {/* <a className="nav-link active" href="#">Home</a>
-              <a className="nav-link" href="#">Internships</a>
-              <a className="nav-link" href="#">Features</a>
-              <a className="nav-link" href="#">About us</a> */}
+              <a className="nav-link active" href="#">Home</a>
+              <a className="nav-link" href="#">About us</a>
+              <a className="nav-link" href="#">Contact us</a>
             </div>
           </div>
 
@@ -139,7 +138,7 @@ export default function HeroNavbar() {
                 >
                   Join the Class
                 </button>
-                <button className="btn btn-outline-secondary rounded-pill px-5 py-3 fw-bold">
+                <button className="btn btn-outline-secondary rounded-pill px-5 py-3 fw-bold" >
                   Learn more
                 </button>
               </div>
